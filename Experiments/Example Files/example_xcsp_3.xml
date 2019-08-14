@@ -21,8 +21,15 @@
     <var id="F206" note="Comment management"> 0 1 </var>
     <var id="F207" note="Product management"> 0 1 </var>
     <var id="F208" note="User management"> 0 1 </var>
+    <var id="F251" note="Shop"> 0 1 </var>
+    <var id="F256" note="Product"> 0 1 </var>
+    <var id="F263" note="Web management"> 0 1 </var>
+    <var id="F270" note="User"> 0 1 </var>
   </variables>
   <constraints>
+    <intension>
+      <function>eq(F1, 1)</function>
+    </intension>
     <intension>
       <function>ge(F2, F1)</function>
     </intension>
