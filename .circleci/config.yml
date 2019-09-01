@@ -9,7 +9,7 @@ jobs:
           name: Install Python requirements
           working_directory: packages/python/requirements
           command: |
-            pip install -r dev.txt
+            pip install --user -r dev.txt
       - run:
           name: Run tests
           working_directory: packages/python 
