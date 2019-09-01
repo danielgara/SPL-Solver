@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install Python deps in a venv
-          working_directory: packages/python/requirements     
+          working_directory: packages/python     
           command: |
             python3 -m venv venv
             . venv/bin/activate
@@ -15,4 +15,5 @@ jobs:
       - run:
           name: Run tests
           working_directory: packages/python 
-          command: pytest
+          command: |
+            pytest
