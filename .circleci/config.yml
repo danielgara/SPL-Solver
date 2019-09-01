@@ -16,4 +16,5 @@ jobs:
           name: Run tests
           working_directory: packages/python 
           command: |
+            . venv/bin/activate
             pytest
