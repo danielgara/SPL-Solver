@@ -20,3 +20,8 @@ steps:
   workingDirectory: packages/python
   displayName: Run tests
   failOnStderr: true
+
+- script: pwd
+  workingDirectory: packages/python
+  displayName: Run tests
+  failOnStderr: true
