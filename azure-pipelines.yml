@@ -16,7 +16,7 @@ steps:
     addToPath: true
     architecture: 'x64'
 
-- script: pip install --upgrade pip && pip install -r requirements.txt && pytest
+- script: pip install --upgrade pip
   workingDirectory: packages/python
   displayName: Run tests
   failOnStderr: true
