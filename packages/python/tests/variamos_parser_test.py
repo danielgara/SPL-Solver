@@ -111,16 +111,71 @@ def test_get_features_2():
 
 
 def test_get_relations_1():
-    pass
+    relations = get_relations(tree_test_1)
+
+    relation_list = [
+        {"type": "mandatory", "source": "2", "target": "1"},
+        {"type": "mandatory", "source": "23", "target": "1"},
+    ]
+
+    assert relations == relation_list
 
 
 def test_get_relations_2():
-    pass
+    relations = get_relations(tree_test_2)
+
+    relation_list = [
+        {"type": "optional", "source": "2", "target": "1"},
+        {"type": "optional", "source": "3", "target": "1"},
+        {"type": "mandatory", "source": "6", "target": "1"},
+        {"type": "mandatory", "source": "49", "target": "1"},
+        {"type": "optional", "source": "60", "target": "1"},
+        {"type": "requires", "source": "75", "target": "77"},
+        {"type": "requires", "source": "208", "target": "72"},
+        {"type": "requires", "source": "206", "target": "143"},
+        {"type": "optional", "source": "251", "target": "1"},
+        {"type": "mandatory", "source": "113", "target": "251"},
+        {"type": "optional", "source": "115", "target": "251"},
+        {"type": "optional", "source": "114", "target": "251"},
+        {"type": "optional", "source": "141", "target": "256"},
+        {"type": "mandatory", "source": "144", "target": "256"},
+        {"type": "optional", "source": "145", "target": "256"},
+        {"type": "mandatory", "source": "142", "target": "256"},
+        {"type": "optional", "source": "143", "target": "256"},
+        {"type": "mandatory", "source": "256", "target": "1"},
+        {"type": "mandatory", "source": "205", "target": "263"},
+        {"type": "optional", "source": "206", "target": "263"},
+        {"type": "optional", "source": "207", "target": "263"},
+        {"type": "optional", "source": "208", "target": "263"},
+        {"type": "optional", "source": "263", "target": "1"},
+        {"type": "optional", "source": "77", "target": "270"},
+        {"type": "mandatory", "source": "72", "target": "270"},
+        {"type": "optional", "source": "75", "target": "270"},
+        {"type": "optional", "source": "270", "target": "1"},
+    ]
+
+    assert relations == relation_list
 
 
 def test_get_bundled_relations_1():
-    pass
+    bundle_relations = get_bundled_relations(tree_test_1)
+
+    bundle_relation_list = [
+        {"type": "bundle", "bundle_type": "AND", "source": "2", "targets": ["6", "17"]},
+        {
+            "type": "bundle",
+            "bundle_type": "RANGE",
+            "source": "23",
+            "targets": ["14", "16"],
+            "low_range": "1",
+            "high_range": "4",
+        },
+    ]
+
+    assert bundle_relations == bundle_relation_list
 
 
 def test_get_bundled_relations_2():
-    pass
+    bundle_relation = get_bundled_relations(tree_test_2)
+
+    assert bundle_relation == []
