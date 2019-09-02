@@ -39,7 +39,7 @@ jobs:
           name: Build Concrete XCSP Container
           working_directory: packages/docker/concrete/XCSP
           command: |
-            docker build -t spl/$IMAGE_NAME:$TAG
+            docker build -t spl/$IMAGE_NAME:$TAG .
 
 workflows:
   version: 2
