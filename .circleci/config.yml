@@ -19,10 +19,11 @@ jobs:
             pip install -r requirements/dev.txt
       - run:
           name: Run tests
-          working_directory: packages/python 
+          working_directory: packages/python
+          store_test_results: test-results 
           command: |
             . venv/bin/activate
-            pytest
+            pytest --junitxml=./test-results/pytest/results.xml
 
 workflows:
   version: 2
