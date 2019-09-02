@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Run tests
           working_directory: packages/python
-          store_test_results: test-results 
+          store_test_results: packages/python/test-results 
           command: |
             . venv/bin/activate
             pytest --junitxml=./test-results/pytest/results.xml
