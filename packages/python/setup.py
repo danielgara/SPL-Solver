@@ -11,11 +11,11 @@ with open("./requirements/prod.txt", "r") as f:
     install_requires = f.read().split("\n")
 
 setup(
-    name="SPL",
+    name="SPLA",
     version=version,
     author="Franciscp J. Piedrahita",
     author_email="fpiedrah93@gmail.com",
-    packages=["spl", "tests"],
+    packages=["spla", "tests"],
     setup_requires=['wheel'],
     url="HTTP://github.com/SPLA/SPL-Solver",
     license="MIT",
