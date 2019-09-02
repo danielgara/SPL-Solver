@@ -23,3 +23,9 @@ jobs:
           command: |
             . venv/bin/activate
             pytest
+
+workflows:
+  version: 2
+  test-and-build-image:
+    jobs:
+      - test-lib
