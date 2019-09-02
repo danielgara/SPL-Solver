@@ -1,5 +1,5 @@
 from lxml import etree
-from spl.variamos_parser import *
+from spla.variamos_parser import *
 
 
 tree_test_1 = etree.parse("./tests/resources/test_1.xml")

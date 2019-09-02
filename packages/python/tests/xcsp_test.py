@@ -1,4 +1,4 @@
-from spl.xcsp import *
+from spla.xcsp import *
 
 
 def test_build_root():
