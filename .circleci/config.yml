@@ -26,6 +26,38 @@ jobs:
       - store_test_results:
           path: packages/python/test-results
 
+  deploy-lib:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Install Python Dependencies
+          working_directory: packages/python     
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements/dev.txt
+      - run:
+          name: Setup Credentials
+          working_directory: packages/python 
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = fpiedrah" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: Create Packages
+          working_directory: packages/python 
+          command: |
+            python setup.py sdist
+            python setup.py bdist_wheel
+      - run:
+          name: Upload
+          working_directory: packages/python 
+          command: |
+            . venv/bin/activate
+            twine upload dist/*
+
+
   build-images:
     executor: python-executor
     steps:
@@ -41,11 +73,19 @@ jobs:
           name: Build Concrete XCSP Container
           working_directory: packages/docker/concrete/XCSP
           command: |
-            docker build -t spl/$IMAGE_NAME:$TAG .
+            docker build -t spl/concrete .
+      - run:
+          name: Build Cryptominisat CNF Container
+          working_directory: packages/docker/cryptominisat/CNF
+          command: |
+            docker build -t spl/cryptominisat .
 
 workflows:
   version: 2
   test-and-build-image:
     jobs:
       - test-lib
+      - deploy-lib
+          requires:
+            - test-lib
       - build-images
