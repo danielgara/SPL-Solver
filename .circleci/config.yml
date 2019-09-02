@@ -49,7 +49,6 @@ jobs:
           working_directory: packages/python 
           command: |
             python setup.py sdist
-            python setup.py bdist_wheel
       - run:
           name: Upload
           working_directory: packages/python 

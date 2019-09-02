@@ -16,7 +16,8 @@ setup(
     author="Franciscp J. Piedrahita",
     author_email="fpiedrah93@gmail.com",
     packages=["spl", "tests"],
-    url="https://github.com/SPLA/SPL-Solver",
+    setup_requires=['wheel'],
+    url="HTTP://github.com/SPLA/SPL-Solver",
     license="MIT",
     classifiers=[
         "Intended Audience :: Developers",
