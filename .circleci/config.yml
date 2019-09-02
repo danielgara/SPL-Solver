@@ -26,8 +26,24 @@ jobs:
       - store_test_results:
           path: packages/python/test-results
 
+  build-images:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Setup Environment
+          command: |
+            echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
+            echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV
+      - run:
+          name: Build Concrete XCSP Container
+          working_directory: packages/docker/concrete/XCSP
+          command: |
+            docker build -t spl/$IMAGE_NAME:$TAG
+
 workflows:
   version: 2
   test-and-build-image:
     jobs:
       - test-lib
+      - build-images
