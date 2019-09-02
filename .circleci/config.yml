@@ -82,10 +82,12 @@ jobs:
 
 workflows:
   version: 2
-  test-and-build-image:
+  test-and-build-lib:
     jobs:
       - test-lib
-      - deploy-lib
+      - deploy-lib:
           requires:
             - test-lib
+  build-and-deploy-docker:
+    jobs:
       - build-images
