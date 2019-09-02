@@ -1,8 +1,13 @@
-version: 2
-jobs:
-  test-lib:
+version: 2.1
+
+executors:
+  python-executor:
     docker:
       - image: circleci/python:3.6.2
+
+jobs:
+  test-lib:
+    executor: python-executor
     steps:
       - checkout
       - run:
