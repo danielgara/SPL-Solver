@@ -2,12 +2,29 @@ from lxml import etree
 
 
 def get_root(variamoso_model):
+    """Get the VariaMos mxGraph root
+    Parameters:
+        Variamos model (xml etree): This a fully constructed tree of the mxGraph
+        data instantiated with lxml.
+
+    Returns:
+        dict: Simple representation of the root as a dict, contains the id, label
+        and type. 
+    """
     feature = variamoso_model.xpath("//root[@type]")[0]
 
     return dict(feature.items())
 
 
 def get_features(variamos_model):
+    """Get the VariaMos mxGrpah list of features
+    Parameters:
+        Variamos model (xml etree): This a fully constructed tree of the mxGraph
+        data instantiated with lxml.
+
+    Returns:
+        dict: 
+    """
     selector = variamos_model.xpath(
         """//concrete[not(contains(@id, 'clon'))] |
            //abstract[not(contains(@id, 'clon'))]"""
@@ -17,6 +34,14 @@ def get_features(variamos_model):
 
 
 def get_relations(variamos_model):
+    """Get the VariaMos mxGraph list of relations
+    Parameters:
+        Variamos model (xml etree): This a fully constructed tree of the mxGraph
+        data instantiated with lxml.
+
+    Returns:
+        dict: 
+    """
     relations = []
 
     for relation in variamos_model.xpath(
@@ -41,6 +66,14 @@ def get_relations(variamos_model):
 
 
 def get_bundled_relations(variamos_model):
+    """Get the VariaMos list of bundled relations
+    Parameters:
+        Variamos model (xml etree): This a fully constructed tree of the mxGraph
+        data instantiated with lxml.
+
+    Returns:
+        dict: 
+    """
     bundles = []
     bundle_relations = []
 
@@ -90,14 +123,18 @@ def get_bundled_relations(variamos_model):
 
 
 def build_feature_model(variamos_xml):
+    """Create a new feature model dict from VariaMos mxGraph
+    Parameters:
+        Variamos model (xml etree): This a fully constructed tree of the mxGraph
+        data instantiated with lxml.
+
+    Returns:
+        dict: 
+    """
     tree = etree.fromstring(variamos_xml)
 
     root = get_root(tree)
     features = get_features(tree) + [root]
     relations = get_relations(tree) + get_bundled_relations(tree)
 
-    return {
-        'root': root.get('id'),
-        'features': features,
-        'relations': relations,
-    }
+    return {"root": root.get("id"), "features": features, "relations": relations}

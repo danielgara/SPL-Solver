@@ -49,6 +49,11 @@ jobs:
           working_directory: packages/python 
           command: |
             python setup.py sdist
+      -run:
+          name: Setup Version
+          working_directory: packages/python
+          command: |
+            git rev-parse --abbrev-ref HEAD >> VERSION
       - run:
           name: Upload
           working_directory: packages/python 
@@ -56,16 +61,10 @@ jobs:
             . venv/bin/activate
             twine upload dist/*
 
-
-  build-images:
+  build-concrete-XCSP:
     executor: python-executor
     steps:
       - checkout
-      - run:
-          name: Setup Environment
-          command: |
-            echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
-            echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
@@ -73,6 +72,11 @@ jobs:
           working_directory: packages/docker/concrete/XCSP
           command: |
             docker build -t spl/concrete .
+
+  build-cryptominisat-CNF:
+    executor: python-executor
+    steps:
+      - checkout
       - run:
           name: Build Cryptominisat CNF Container
           working_directory: packages/docker/cryptominisat/CNF
@@ -84,12 +88,11 @@ workflows:
   test-and-build-lib:
     jobs:
       - test-lib
+      # Should only happen in version branches
       - deploy-lib:
           requires:
             - test-lib
-          filters:
-            branches:
-              only: /^(\d|[1-9]\d*)\.(\d|[1-9]\d*)\.(\d|[1-9]\d*)(-(0|[1-9A-Za-z-][0-9A-Za-z-]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(\.(0|[1-9A-Za-z-][0-9A-Za-z-]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$/
   build-and-deploy-docker:
     jobs:
-      - build-images
+      - build-concrete-XCSP
+      - build-cryptominisat-CNF
