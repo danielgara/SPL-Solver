@@ -4,7 +4,39 @@ executors:
   python-executor:
     docker:
       - image: circleci/python:3.6.2
+  ubuntu-executor:
+    docker:
+      - image: buildpack-deps:trusty
 
+workflows:
+  version: 2
+  python:
+    jobs:
+      - test-lib
+      # Should only happen in version branches
+      - deploy-lib:
+          requires:
+            - test-lib
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/ 
+  docker:
+    jobs:
+      - build-concrete-XCSP:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/ 
+      - build-cryptominisat-CNF:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/ 
+    
 jobs:
   test-lib:
     executor: python-executor
@@ -38,22 +70,22 @@ jobs:
             . venv/bin/activate
             pip install -r requirements/dev.txt
       - run:
+          name: Setup Version
+          working_directory: packages/python
+          command: |
+            git rev-parse --abbrev-ref HEAD >> VERSION
+      - run:
           name: Setup Credentials
           working_directory: packages/python 
           command: |
             echo -e "[pypi]" >> ~/.pypirc
-            echo -e "username = fpiedrah" >> ~/.pypirc
+            echo -e "username = $PYPI_LOGIN" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
       - run:
           name: Create Packages
           working_directory: packages/python 
           command: |
             python setup.py sdist
-      - run:
-          name: Setup Version
-          working_directory: packages/python
-          command: |
-            git rev-parse --abbrev-ref HEAD >> VERSION
       - run:
           name: Upload
           working_directory: packages/python 
@@ -62,7 +94,7 @@ jobs:
             twine upload dist/*
 
   build-concrete-XCSP:
-    executor: python-executor
+    executor: ubuntu-executor
     steps:
       - checkout
       - setup_remote_docker:
@@ -71,28 +103,26 @@ jobs:
           name: Build Concrete XCSP Container
           working_directory: packages/docker/concrete/XCSP
           command: |
-            docker build -t spl/concrete .
+            docker build -t spl/concrete-xcsp:$(git rev-parse --abbrev-ref HEAD) .
+      - run:
+          name: Push Cryptominisat CNF to Docker Hub
+          command: |
+            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            docker push spl/concrete-xcsp:$(git rev-parse --abbrev-ref HEAD)
 
   build-cryptominisat-CNF:
-    executor: python-executor
+    executor: ubuntu-executor
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Build Cryptominisat CNF Container
           working_directory: packages/docker/cryptominisat/CNF
           command: |
-            docker build -t spl/cryptominisat .
-
-workflows:
-  version: 2
-  test-and-build-lib:
-    jobs:
-      - test-lib
-      # Should only happen in version branches
-      - deploy-lib:
-          requires:
-            - test-lib
-  build-and-deploy-docker:
-    jobs:
-      - build-concrete-XCSP
-      - build-cryptominisat-CNF
+            docker build -t spl/cryptominisat-cnf:$(git rev-parse --abbrev-ref HEAD) .
+      - run:
+          name: Push Cryptominisat CNF to Docker Hub
+          command: |
+            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            docker push spl/cryptominisat-cnf:$(git rev-parse --abbrev-ref HEAD)
