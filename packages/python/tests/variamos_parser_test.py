@@ -217,7 +217,7 @@ def test_build_feature_model_1():
                 "targets": ["14", "16"],
                 "low_range": "1",
                 "high_range": "4",
-            },
+            }
         ],
     }
 

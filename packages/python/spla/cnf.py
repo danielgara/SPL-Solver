@@ -1,3 +1,6 @@
+from lxml.builder import E
+
+
 def build_root(source):
     condition = f"{source} 0"
 
@@ -63,5 +66,6 @@ cnf_restriction_map = {
     },
 }
 
-def build_cnf_file():
+
+def build_cnf_file(feature_model):
     pass

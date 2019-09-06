@@ -1,3 +1,4 @@
+from lxml import etree
 from lxml.builder import E
 
 
@@ -84,4 +85,52 @@ xcsp_restriction_map = {
 
 
 def build_xcsp_file(feature_model):
-    pass
+    features = feature_model["features"]
+    features_xcsp = [
+        E.var(" 0 1 ", id=f"F{feature['id']}", note=f"{feature['label']}")
+        for feature in features
+    ]
+
+    root = feature_model["root"]
+    root_xcsp = [E.intension(E.function(xcsp_restriction_map["root"](f"F{root}")))]
+
+    relations = filter(lambda x: not x["type"] == "bundle", feature_model["relations"])
+    relations_xcsp = [
+        E.intension(
+            E.function(
+                xcsp_restriction_map[relation["type"]](
+                    f"F{relation['source']}", f"F{relation['target']}"
+                )
+            )
+        )
+        for relation in relations
+    ]
+
+    bundles = filter(lambda x: x["type"] == "bundle", feature_model["relations"])
+    bundles_xcsp = []
+
+    for bundle in bundles:
+        args = [f"F{bundle['source']}", [f"F{target}" for target in bundle["targets"]]]
+
+        if bundle["bundle_type"].lower() == "range":
+            args.append(bundle["low_range"])
+            args.append(bundle["high_range"])
+
+        bundles_xcsp.append(
+            E.intension(
+                E.function(
+                    xcsp_restriction_map["bundle"][bundle["bundle_type"].lower()](*args)
+                )
+            )
+        )
+
+    constraints_xcsp = root_xcsp + relations_xcsp + bundles_xcsp
+
+    xcsp = E.instance(
+        E.variables(*features_xcsp),
+        E.constraints(*constraints_xcsp),
+        format="XCSP3",
+        type="CSP",
+    )
+
+    return str(etree.tostring(xcsp, pretty_print=True), "UTF-8")
