@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "aec33b56-9807-4d08-8745-6dba3b7c556d",
+		"name": "Variamos Solver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Empty Feature Model",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"solver\": \"cadical\",\n  \"feature_model\": {\n    \"name\": \"Mobile Phone Feature Model\",\n    \"author\": \"Paolo Vavassori\",\n    \"description\": \"Example of a Feature Model\",\n    \"features\": [\n      {\n        \"id\": 1,\n        \"name\": \"Mobile Phone\",\n        \"constraints\": [\n          {\n            \"constraint_type\": \"root\"\n          },\n          {\n            \"constraint_type\": \"mandatory\",\n            \"destination\": 2\n          },\n          {\n            \"constraint_type\": \"optional\",\n            \"destination\": 3\n          },\n          {\n            \"constraint_type\": \"mandatory\",\n            \"destination\": 4\n          },\n          {\n            \"constraint_type\": \"optional\",\n            \"destination\": 5\n          }\n        ]\n      },\n      {\n        \"id\": 2,\n        \"name\": \"Calls\"\n      },\n      {\n        \"id\": 3,\n        \"name\": \"GPS\",\n        \"constraints\": [\n          {\n            \"constraint_type\": \"excludes\",\n            \"destination\": 6\n          }\n        ]\n      },\n      {\n        \"id\": 4,\n        \"name\": \"Screen\",\n        \"constraints\": [\n          {\n            \"constraint_type\": \"group_cardinality\",\n            \"low_threshold\": 1,\n            \"high_threshold\": 3,\n            \"destination\": [\n              6,\n              7,\n              8\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": 5,\n        \"name\": \"Media\",\n        \"constraints\": [\n          {\n            \"constraint_type\": \"or\",\n            \"destination\": [\n              9,\n              10\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": 6,\n        \"name\": \"Basic\",\n        \"constraints\": [\n          {\n            \"constraint_type\": \"excludes\",\n            \"destination\": 3\n          }\n        ]\n      },\n      {\n        \"id\": 7,\n        \"name\": \"Colour\"\n      },\n      {\n        \"id\": 8,\n        \"name\": \"High Resolution\"\n      },\n      {\n        \"id\": 9,\n        \"name\": \"Camera\",\n        \"constraints\": [\n          {\n            \"constraint_type\": \"requires\",\n            \"destination\": 8\n          }\n        ]\n      },\n      {\n        \"id\": 10,\n        \"name\": \"MP3\"\n      }\n    ]\n  }\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/cnf/is_empty",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"cnf",
+						"is_empty"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
