@@ -1,9 +1,7 @@
 # REST API
-----
 This project exposes a Flask server with a REST API to make easier to integrate multiple Software Product Line solvers into the Variamos project. This API allows to integrate CNF and XCSP to any web project.
 
 ## Feature Model
-----
 The feature model is described as a JSON blob, the idea is to send this blob structure each time a validation of the Feature Model is required. This structure is described by a JSON schema that validates the proper structure of the JSON before transforming the data into the solvers specific language.
 
 **Example Feature Model JSON**
@@ -120,7 +118,7 @@ The feature model is described as a JSON blob, the idea is to send this blob str
 }
 ```
 
-### Feature Model is Empty -- CNF
+**Feature Model is Empty -- CNF**
 ----
 An empty variability model is empty, inconsistent or contradictory when it is impossible to derive any valid model from it.
 
@@ -137,7 +135,7 @@ An empty variability model is empty, inconsistent or contradictory when it is im
   **required**
   `id=[feature-model]`
   
-### Is Real Product Line -- CNF
+**Is Real Product Line -- CNF**
 ----
 A variability model if a fake product line model  when it is only possible to derive one product from it.
 
@@ -154,7 +152,7 @@ A variability model if a fake product line model  when it is only possible to de
   **required**
   `id=[feature-model]`
   
-### Get Dead Features -- CNF
+**Get Dead Features -- CNF**
 ----
 The dead element of a variability model are those who, although considered in the the model, can't be present in any of the derived products from the variability model.
 
@@ -171,7 +169,7 @@ The dead element of a variability model are those who, although considered in th
   **required**
   `id=[feature-model]`
 
-### Get Fake Optional -- CNF
+**Get Fake Optional -- CNF**
 ----
 Are those who are modeled as an optional element of the variability model, but they are present in all valid configurations, this meaning that they are actually mandatory elements of the variability model.
 
