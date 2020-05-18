@@ -1,10 +1,10 @@
 # REST API
----
+----
 
 This project exposes a Flask server with a REST API to make easier to integrate multiple Software Product Line solvers into the Variamos project. This API allows to integrate CNF and XCSP to any web project.
 
 ## Feature Model
----
+----
 
 The feature model is described as a JSON blob, the idea is to send this blob structure each time a validation of the Feature Model is required. This structure is described by a JSON schema that validates the proper structure of the JSON before transforming the data into the solvers specific language.
 
@@ -123,7 +123,7 @@ The feature model is described as a JSON blob, the idea is to send this blob str
 ```
 
 ### Feature Model is Empty -- CNF
----
+----
 
 * **URL**
 
@@ -139,7 +139,7 @@ The feature model is described as a JSON blob, the idea is to send this blob str
   `id=[feature-model]`
   
 ### Is Real Product Line -- CNF
----
+----
 
 * **URL**
 
@@ -155,7 +155,7 @@ The feature model is described as a JSON blob, the idea is to send this blob str
   `id=[feature-model]`
   
 ### Get Dead Features -- CNF
----
+----
 
 * **URL**
 
@@ -171,7 +171,7 @@ The feature model is described as a JSON blob, the idea is to send this blob str
   `id=[feature-model]`
 
 ### Get Fake Optional -- CNF
----
+----
 
 * **URL**
 
