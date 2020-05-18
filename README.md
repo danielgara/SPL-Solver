@@ -133,7 +133,7 @@ An empty variability model is empty, inconsistent or contradictory when it is im
 * **URL Params**
 
   **required**
-  `id=[feature-model]`
+  `feature_model=[feature-model]`
   
 **Is Real Product Line -- CNF**
 ----
@@ -150,7 +150,7 @@ A variability model if a fake product line model  when it is only possible to de
 * **URL Params**
 
   **required**
-  `id=[feature-model]`
+  `feature_model=[feature-model]`
   
 **Get Dead Features -- CNF**
 ----
@@ -167,7 +167,7 @@ The dead element of a variability model are those who, although considered in th
 * **URL Params**
 
   **required**
-  `id=[feature-model]`
+  `feature_model=[feature-model]`
 
 **Get Fake Optional -- CNF**
 ----
@@ -184,4 +184,4 @@ Are those who are modeled as an optional element of the variability model, but t
 * **URL Params**
 
   **required**
-  `id=[feature-model]` 
+  `feature_model=[feature-model]` 
