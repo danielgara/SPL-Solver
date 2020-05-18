@@ -12,7 +12,7 @@ solver_blueprint = Blueprint(
 )
 
 
-@solver_blueprint.route("/cnf/is_empty", methods=["POST"])
+@solver_blueprint.route("/feature-model/cnf/is_empty", methods=["POST"])
 def is_empty_cnf():
     args = request.get_json(force=True)
 
@@ -37,7 +37,7 @@ def is_empty_cnf():
     }), 200
 
 
-@solver_blueprint.route("/cnf/is_real", methods=["POST"])
+@solver_blueprint.route("/feature-model/cnf/is_real", methods=["POST"])
 def is_real_cnf():
     args = request.get_json(force=True)
 
@@ -59,7 +59,7 @@ def is_real_cnf():
     }), 200
 
 
-@solver_blueprint.route("/cnf/dead_features", methods=["POST"])
+@solver_blueprint.route("/feature-model/cnf/dead_features", methods=["POST"])
 def dead_features_cnf():
     args = request.get_json(force=True)
 
@@ -81,7 +81,7 @@ def dead_features_cnf():
     }), 200
 
 
-@solver_blueprint.route("/cnf/fake_optionals", methods=["POST"])
+@solver_blueprint.route("/feature-model/cnf/fake_optionals", methods=["POST"])
 def dead_fake_optionals():
     args = request.get_json(force=True)
 
