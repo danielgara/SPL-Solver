@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "9eb5b85d-2129-4f46-9070-eec6a07700cd",
+		"name": "SPL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CNF Satistiable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"statement\": [\n\t\t\"c  quinn.cnf\",\n\t\t\"c\",\n\t\t\"p cnf 16 18\",\n\t\t\"  1    2  0\",\n\t\t\" -2   -4  0\",\n\t\t\"  3    4  0\",\n\t\t\" -4   -5  0\",\n\t\t\"  5   -6  0\",\n\t\t\"  6   -7  0\",\n\t\t\"  6    7  0\",\n\t\t\"  7  -16  0\",\n\t\t\"  8   -9  0\",\n\t\t\" -8  -14  0\",\n\t\t\"  9   10  0\",\n\t\t\"  9  -10  0\",\n\t\t\"-10  -11  0\",\n\t\t\" 10   12  0\",\n\t\t\" 11   12  0\",\n\t\t\" 13   14  0\",\n\t\t\" 14  -15  0\",\n\t\t\" 15   16  0\"\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/solvers/cnf/satisfiable",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"solvers",
+						"cnf",
+						"satisfiable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF Solutions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"statement\": [\n\t\t\"c  quinn.cnf\",\n\t\t\"c\",\n\t\t\"p cnf 16 18\",\n\t\t\"  1    2  0\",\n\t\t\" -2   -4  0\",\n\t\t\"  3    4  0\",\n\t\t\" -4   -5  0\",\n\t\t\"  5   -6  0\",\n\t\t\"  6   -7  0\",\n\t\t\"  6    7  0\",\n\t\t\"  7  -16  0\",\n\t\t\"  8   -9  0\",\n\t\t\" -8  -14  0\",\n\t\t\"  9   10  0\",\n\t\t\"  9  -10  0\",\n\t\t\"-10  -11  0\",\n\t\t\" 10   12  0\",\n\t\t\" 11   12  0\",\n\t\t\" 13   14  0\",\n\t\t\" 14  -15  0\",\n\t\t\" 15   16  0\"\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/solvers/cnf/solutions",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"solvers",
+						"cnf",
+						"solutions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
