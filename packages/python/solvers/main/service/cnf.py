@@ -16,17 +16,20 @@ solver_map = {
 }
 
 
-def get_formula(statement):
-    return formulas.CNF(from_string=statement)
+def get_formula(statements, restrictions):
+    clauses = statements + restrictions
+
+    return formulas.CNF(from_clauses=clauses)
 
 
-def is_satisfiable(formula, solver):
+def get_solutions(formula, solver, num_solutions):
+    solutions = []
+
     with solver(bootstrap_with=formula.clauses) as solver:
-        return solver.solve()
+        for index, solution in enumerate(solver.enum_models()):
+            if index >= num_solutions:
+                return solutions
 
+            solutions.append(solution)
 
-def get_solutions(formula, solver):
-    with solver(bootstrap_with=formula.clauses) as solver:
-        return [
-            solution for index, solution in enumerate(solver.enum_models())
-        ]
+    return solutions

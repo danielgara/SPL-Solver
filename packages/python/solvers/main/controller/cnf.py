@@ -10,33 +10,25 @@ blueprint = Blueprint(
 )
 
 
-@blueprint.route("/satisfiable", methods=["POST"])
-def is_satisfiable():
-    args = request.get_json(force=True)
-
-    solver = cnf.solver_map[
-        args.get("solver", "cadical")
-    ]
-
-    statement = "\n".join(args.get("statement"))
-    formula = cnf.get_formula(statement)
-
-    return jsonify({
-        "is_staistiable": cnf.is_satisfiable(formula, solver)
-    }), 200
-
-
 @blueprint.route("/solutions", methods=["POST"])
 def get_solutions():
     args = request.get_json(force=True)
 
-    solver = cnf.solver_map[
-        args.get("solver", "cadical")
-    ]
+    solver = args.get("solver", "cadical")
+    statements = args.get("statements")
+    restrictions = args.get("restrictions", [])
+    num_solutions = args.get("num_solutions", float('inf'))
 
-    statement = "\n".join(args.get("statement"))
-    formula = cnf.get_formula(statement)
+    if not statements:
+        return jsonify({
+            "error": "Post request must contain statements"
+        }), 400
+
+    solver = cnf.solver_map[solver]
+    formula = cnf.get_formula(statements, restrictions)
+
+    solutions = cnf.get_solutions(formula, solver, num_solutions)
 
     return jsonify({
-        "solutions": cnf.get_solutions(formula, solver)
+        "solutions": solutions
     }), 200
