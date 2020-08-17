@@ -10,7 +10,7 @@ blueprint = Blueprint(
 )
 
 
-@blueprint.route("/solutions", methods=["POST"])
+@blueprint.route("/cnf/solutions", methods=["POST"])
 def get_solutions():
     args = request.get_json(force=True)
 

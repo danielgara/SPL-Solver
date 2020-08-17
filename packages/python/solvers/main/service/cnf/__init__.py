@@ -1,5 +1,6 @@
 import pysat.formula as formulas
 import pysat.solvers as solvers
+import solvers.main.service.cnf.feature_model as feature_model
 
 
 solver_map = {
