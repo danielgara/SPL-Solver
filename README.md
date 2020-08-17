@@ -6,7 +6,7 @@ The feature model is described as a JSON blob, the idea is to send this blob str
 
 **Example Feature Model JSON**
 
-![alt text](./packages/jupyter/images/feature_model_example.png "Example Feature Model")
+![alt text]( https://www.researchgate.net/profile/Paolo_Vavassori3/publication/281701630/figure/fig1/AS:308695956246528@1450610259729/Example-of-a-Feature-Model.png "Example Feature Model")
 
 ```javascript
 {
