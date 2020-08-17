@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9eb5b85d-2129-4f46-9070-eec6a07700cd",
+		"_postman_id": "f723356b-28e2-4896-974f-9954e79f828f",
 		"name": "SPL",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -39,46 +39,13 @@
 			"response": []
 		},
 		{
-			"name": "CNF Feature Model Solutions Copy",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"num_solutions\": 2,\n\t\"feature_model\": {\n\t\t\"name\": \"Mobile Phone Feature Model\",\n\t\t\"author\": \"Paolo Vavassori\",\n\t\t\"description\": \"Example of a Feature Model\",\n\t\t\"features\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"Mobile Phone\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"root\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 2\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 4\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 5\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 2,\n\t\t\t\t\"name\": \"Calls\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 3,\n\t\t\t\t\"name\": \"GPS\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 6\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4,\n\t\t\t\t\"name\": \"Screen\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"group_cardinality\",\n\t\t\t\t\t\t\"low_threshold\": 1,\n\t\t\t\t\t\t\"high_threshold\": 3,\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t6,\n\t\t\t\t\t\t7,\n\t\t\t\t\t\t8\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 5,\n\t\t\t\t\"name\": \"Media\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"or\",\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t9,\n\t\t\t\t\t\t10\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 6,\n\t\t\t\t\"name\": \"Basic\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 7,\n\t\t\t\t\"name\": \"Colour\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 8,\n\t\t\t\t\"name\": \"High Resolution\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 9,\n\t\t\t\t\"name\": \"Camera\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"requires\",\n\t\t\t\t\t\t\"destination\": 8\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 10,\n\t\t\t\t\"name\": \"MP3\"\n\t\t\t}\n\t\t]\n\t}\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:5000/solvers/feature_model/solutions",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"solvers",
-						"feature_model",
-						"solutions"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "CNF Feature Model",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"num_solutions\": 2,\n\t\"statements\": [\n\t\t[  1,    2],\n\t\t[ -2,   -4],\n\t\t[  3,    4],\n\t\t[ -4,   -5],\n\t\t[  5,   -6],\n\t\t[  6,   -7],\n\t\t[  6,    7],\n\t\t[  7,  -16],\n\t\t[  8,   -9],\n\t\t[ -8,  -14],\n\t\t[  9,   10],\n\t\t[  9,  -10],\n\t\t[-10,  -11],\n\t\t[ 10,   12],\n\t\t[ 11,   12],\n\t\t[ 13,   14],\n\t\t[ 14,  -15],\n\t\t[ 15,   16]\n\t],\n\t\"restrictions\": [\n\t    [-1],\n\t    [ 2],\n\t    [ 3]\n\t]\n}",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"feature_model\": {\n\t\t\"name\": \"Mobile Phone Feature Model\",\n\t\t\"author\": \"Paolo Vavassori\",\n\t\t\"description\": \"Example of a Feature Model\",\n\t\t\"features\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"Mobile Phone\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"root\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 2\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 4\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 5\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 2,\n\t\t\t\t\"name\": \"Calls\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 3,\n\t\t\t\t\"name\": \"GPS\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 6\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4,\n\t\t\t\t\"name\": \"Screen\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"group_cardinality\",\n\t\t\t\t\t\t\"low_threshold\": 1,\n\t\t\t\t\t\t\"high_threshold\": 3,\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t6,\n\t\t\t\t\t\t7,\n\t\t\t\t\t\t8\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 5,\n\t\t\t\t\"name\": \"Media\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"or\",\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t9,\n\t\t\t\t\t\t10\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 6,\n\t\t\t\t\"name\": \"Basic\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 7,\n\t\t\t\t\"name\": \"Colour\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 8,\n\t\t\t\t\"name\": \"High Resolution\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 9,\n\t\t\t\t\"name\": \"Camera\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"requires\",\n\t\t\t\t\t\t\"destination\": 8\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 10,\n\t\t\t\t\"name\": \"MP3\"\n\t\t\t}\n\t\t]\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,7 +53,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/solvers/cnf/solutions",
+					"raw": "http://127.0.0.1:5000/solvers/feature-model/cnf/is-empty",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -97,8 +64,145 @@
 					"port": "5000",
 					"path": [
 						"solvers",
+						"feature-model",
 						"cnf",
-						"solutions"
+						"is-empty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF Feature Model Is Empty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"feature_model\": {\n\t\t\"name\": \"Mobile Phone Feature Model\",\n\t\t\"author\": \"Paolo Vavassori\",\n\t\t\"description\": \"Example of a Feature Model\",\n\t\t\"features\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"Mobile Phone\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"root\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 2\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 4\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 5\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 2,\n\t\t\t\t\"name\": \"Calls\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 3,\n\t\t\t\t\"name\": \"GPS\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 6\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4,\n\t\t\t\t\"name\": \"Screen\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"group_cardinality\",\n\t\t\t\t\t\t\"low_threshold\": 1,\n\t\t\t\t\t\t\"high_threshold\": 3,\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t6,\n\t\t\t\t\t\t7,\n\t\t\t\t\t\t8\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 5,\n\t\t\t\t\"name\": \"Media\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"or\",\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t9,\n\t\t\t\t\t\t10\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 6,\n\t\t\t\t\"name\": \"Basic\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 7,\n\t\t\t\t\"name\": \"Colour\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 8,\n\t\t\t\t\"name\": \"High Resolution\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 9,\n\t\t\t\t\"name\": \"Camera\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"requires\",\n\t\t\t\t\t\t\"destination\": 8\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 10,\n\t\t\t\t\"name\": \"MP3\"\n\t\t\t}\n\t\t]\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/solvers/feature-model/cnf/is-empty",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"solvers",
+						"feature-model",
+						"cnf",
+						"is-empty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF Feature Model Is Real",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"feature_model\": {\n\t\t\"name\": \"Mobile Phone Feature Model\",\n\t\t\"author\": \"Paolo Vavassori\",\n\t\t\"description\": \"Example of a Feature Model\",\n\t\t\"features\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"Mobile Phone\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"root\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 2\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 4\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 5\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 2,\n\t\t\t\t\"name\": \"Calls\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 3,\n\t\t\t\t\"name\": \"GPS\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 6\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4,\n\t\t\t\t\"name\": \"Screen\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"group_cardinality\",\n\t\t\t\t\t\t\"low_threshold\": 1,\n\t\t\t\t\t\t\"high_threshold\": 3,\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t6,\n\t\t\t\t\t\t7,\n\t\t\t\t\t\t8\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 5,\n\t\t\t\t\"name\": \"Media\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"or\",\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t9,\n\t\t\t\t\t\t10\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 6,\n\t\t\t\t\"name\": \"Basic\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 7,\n\t\t\t\t\"name\": \"Colour\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 8,\n\t\t\t\t\"name\": \"High Resolution\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 9,\n\t\t\t\t\"name\": \"Camera\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"requires\",\n\t\t\t\t\t\t\"destination\": 8\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 10,\n\t\t\t\t\"name\": \"MP3\"\n\t\t\t}\n\t\t]\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/solvers/feature-model/cnf/is-real",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"solvers",
+						"feature-model",
+						"cnf",
+						"is-real"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF Feature Model Has Fake Optionals",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"feature_model\": {\n\t\t\"name\": \"Mobile Phone Feature Model\",\n\t\t\"author\": \"Paolo Vavassori\",\n\t\t\"description\": \"Example of a Feature Model\",\n\t\t\"features\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"Mobile Phone\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"root\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 2\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 4\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 5\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 2,\n\t\t\t\t\"name\": \"Calls\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 3,\n\t\t\t\t\"name\": \"GPS\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 6\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4,\n\t\t\t\t\"name\": \"Screen\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"group_cardinality\",\n\t\t\t\t\t\t\"low_threshold\": 1,\n\t\t\t\t\t\t\"high_threshold\": 3,\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t6,\n\t\t\t\t\t\t7,\n\t\t\t\t\t\t8\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 5,\n\t\t\t\t\"name\": \"Media\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"or\",\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t9,\n\t\t\t\t\t\t10\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 6,\n\t\t\t\t\"name\": \"Basic\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 7,\n\t\t\t\t\"name\": \"Colour\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 8,\n\t\t\t\t\"name\": \"High Resolution\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 9,\n\t\t\t\t\"name\": \"Camera\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"requires\",\n\t\t\t\t\t\t\"destination\": 8\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 10,\n\t\t\t\t\"name\": \"MP3\"\n\t\t\t}\n\t\t]\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/solvers/feature-model/cnf/is-empty",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"solvers",
+						"feature-model",
+						"cnf",
+						"is-empty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF Feature Model Has Dead Features",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"solver\": \"cadical\",\n\t\"feature_model\": {\n\t\t\"name\": \"Mobile Phone Feature Model\",\n\t\t\"author\": \"Paolo Vavassori\",\n\t\t\"description\": \"Example of a Feature Model\",\n\t\t\"features\": [\n\t\t\t{\n\t\t\t\t\"id\": 1,\n\t\t\t\t\"name\": \"Mobile Phone\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"root\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 2\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"mandatory\",\n\t\t\t\t\t\t\"destination\": 4\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"optional\",\n\t\t\t\t\t\t\"destination\": 5\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 2,\n\t\t\t\t\"name\": \"Calls\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 3,\n\t\t\t\t\"name\": \"GPS\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 6\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 4,\n\t\t\t\t\"name\": \"Screen\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"group_cardinality\",\n\t\t\t\t\t\t\"low_threshold\": 1,\n\t\t\t\t\t\t\"high_threshold\": 3,\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t6,\n\t\t\t\t\t\t7,\n\t\t\t\t\t\t8\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 5,\n\t\t\t\t\"name\": \"Media\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"or\",\n\t\t\t\t\t\t\"destination\": [\n\t\t\t\t\t\t9,\n\t\t\t\t\t\t10\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 6,\n\t\t\t\t\"name\": \"Basic\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"excludes\",\n\t\t\t\t\t\t\"destination\": 3\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 7,\n\t\t\t\t\"name\": \"Colour\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 8,\n\t\t\t\t\"name\": \"High Resolution\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 9,\n\t\t\t\t\"name\": \"Camera\",\n\t\t\t\t\"constraints\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"constraint_type\": \"requires\",\n\t\t\t\t\t\t\"destination\": 8\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\": 10,\n\t\t\t\t\"name\": \"MP3\"\n\t\t\t}\n\t\t]\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/solvers/feature-model/cnf/is-empty",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"solvers",
+						"feature-model",
+						"cnf",
+						"is-empty"
 					]
 				}
 			},
